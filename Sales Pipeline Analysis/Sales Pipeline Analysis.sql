@@ -9,8 +9,7 @@ SELECT MONTH(engage_date) AS `Month`, COUNT(*) AS `Deal Counts`
 FROM sales_pipeline
 GROUP BY `Month`
 ORDER BY 2 DESC;
--- The deals often occur in February, followed by March and January.
--- Basically, the first three months were the time when the deals occurred the most.
+-- The deals often occur in July.
 
 /* Second, we would like to find and compare the average amount of time between lost deals (still closed deal) versus won deals.
 (from "engage_date" to "close_date")*/
@@ -40,7 +39,7 @@ SELECT sales_agent, ROUND(SUM(CASE WHEN deal_stage = "Won" THEN 1 ELSE 0 END) / 
 FROM sales_pipeline
 GROUP BY sales_agent
 ORDER BY 2 DESC;
--- The top performer is Hayden Neloms with 70.39% win rate.
+-- The top performing sales agent is Hayden Neloms with a 70.39% win rate.
 
 -- Second, we would like to calculate total revenue by agent and see who generated the most.
 SELECT sales_agent, SUM(close_value) AS `Total Revenue`
@@ -78,7 +77,7 @@ WHERE deal_stage= "Won" AND MONTH(close_date) = 3
 GROUP BY product
 ORDER BY 2 DESC;
 -- We can see that the product with the highest revenue is GTXPro but it is not the most units sold.
--- The most units sold product is GTX Basic.
+-- The most units sold is GTX Basic.
 
 -- Second, we want to find the average difference between sales price and close value for each product.
 SELECT sp.product, ROUND(AVG(p.sales_price - sp.close_value), 2) AS `Average Differences`
@@ -88,8 +87,8 @@ LEFT JOIN products AS p
 WHERE sp.deal_stage = "Won"
 GROUP BY sp.product
 ORDER BY 2 DESC;
--- GTK 500 has the highest average difference between sales price and close value.
--- It means that GTK 500 has average around 60% discount of its product.
+-- GTK 500 has the highest average difference between sales price and close value (60.53).
+-- It means that GTK 500 has an average of 60% discount on its product.
 -- GTXPro has a null value because when we join the column to Product table, it doesn't have the same column name "GTX Pro" (with space).
 
 -- Third, we need to compare total revenue by each product series.
@@ -100,7 +99,7 @@ LEFT JOIN sales_pipeline AS sp
 WHERE sp.deal_stage = "Won"
 GROUP BY p.series
 ORDER BY 2 DESC;
--- GTX series has the most total revenue series.
+-- The GTX series has the most total revenue, while GTK series has the least total revenue.
 
 -- Objective 4: Account Analysis --
 -- Analyze the company's accounts to get a better understanding of the team's customers
