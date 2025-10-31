@@ -9,3 +9,9 @@ Analyze hospital patient encounters, costs, and behavior trends to support plann
 1. Encounter Overview: become familiar with the encounters table by slicing the data by years, encounter class, and encounter length.
 2. Cost & Coverage Insight: analyze payer coverage, top procedures by frequency and cost, and average claim costs by payer.
 3. Patient Behaviour Analysis: analyze patient behavior by tracking quarterly admissions and 30-day readmissions.
+
+## Key Findings
+- There are 693 patients who were readmitted within 30 days of a previous encounter.
+- 49% of total encounters had zero payer coverage.
+- The most total encounters occured each year was in 2014.
+- Assessment of health and social care needs is the most frequent procedure performed, with 431$ average base cost. While Admit to ICU is the procedure that had the highest average base cost (206260$).
